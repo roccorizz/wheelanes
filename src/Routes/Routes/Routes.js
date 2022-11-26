@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
+import SingleCarCard from "../../Pages/Home/AllCars/SingleCarCard/SingleCarCard";
 
 
 import Home from "../../Pages/Home/Home/Home";
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />
-            }
+            }, {
+                path: '/featured-cars/:id',
+                element: <SingleCarCard></SingleCarCard>,
+                loader: ({ params }) => fetch(`http://localhost:5000/featured-cars/${params.id}`)
+            },
         ]
     },
     // {
