@@ -1,0 +1,20 @@
+#service-hero {
+    background-image: url('./banner.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 200px;
+    border-radius: 20px;
+    ;
+}
+
+#service-hero .hero-content {
+    background-color: rgba(0, 0, 0, 0.356) !important;
+    position: absolute;
+    height: 200px;
+    border-radius: 20px;
+    width: 100%;
+}
+
+.hero-overlay {
+    border-radius: 20px;
+}
