@@ -13,6 +13,7 @@ const DisplayError = () => {
     }
     return (
         <div>
+            <img className='w-full' src='../../../assets/404/404.jpg' alt=''></img>
             <p className='text-red-500'>Something went wrong!!!</p>
             <p className='text-red-500'>{error.statusText || error.message}</p>
             <h4 className='text-3xl'>Please <button onClick={handleLogOut}>Sign out</button> and log back in</h4>

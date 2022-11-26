@@ -2,6 +2,7 @@ import React from 'react';
 import AllCars from '../AllCars/AllCars/AllCars';
 import Banner from '../Banner/Banner';
 import FeaturedCars from '../FeaturedCars/FeaturedCars';
+import Testimonials from '../Testimonials/Testimonials';
 
 
 
@@ -13,6 +14,7 @@ const Home = () => {
             <Banner />
             <FeaturedCars />
             <AllCars />
+            <Testimonials />
         </div>
     );
 };

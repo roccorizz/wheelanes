@@ -1,3 +1,4 @@
-.singledetails img {
-    padding-left: 0px 100px;
+.car-image {
+    background-image: url('./banner.jpg');
+
 }
