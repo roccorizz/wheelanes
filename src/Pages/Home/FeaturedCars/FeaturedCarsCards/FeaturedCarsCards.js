@@ -17,7 +17,7 @@ const FeaturedCarsCards = ({ featuredcar }) => {
 
             </figure>
             <div className="card-body">
-                <h2 className="card-title text-1xl">{Name}</h2>
+                <h2 className="card-title text-1xl capitalize">{Name}</h2>
                 <div className="card-actions justify-start">
                     <h3 className='text-black-600' style={{ fontSize: '17px' }}><strong>Price</strong> : ${price}</h3>
                 </div>

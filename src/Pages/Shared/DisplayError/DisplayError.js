@@ -1,22 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useRouteError } from 'react-router-dom';
-import { AuthContext } from '../../../Contexts/AuthProvider';
+import pagenotfound from '../../../assets/404/404.jpg'
 const DisplayError = () => {
-    const { logOut } = useContext(AuthContext)
     const error = useRouteError();
-    const handleLogOut = () => {
-        logOut()
-            .then(() => {
 
-            })
-            .catch(err => console.log(err));
-    }
     return (
-        <div>
-            <img className='w-full' src='../../../assets/404/404.jpg' alt=''></img>
+        <div className='align-center'>
+            <img className='w-2/3 ' src={pagenotfound} alt=''></img>
             <p className='text-red-500'>Something went wrong!!!</p>
             <p className='text-red-500'>{error.statusText || error.message}</p>
-            <h4 className='text-3xl'>Please <button onClick={handleLogOut}>Sign out</button> and log back in</h4>
+
         </div>
     );
 };

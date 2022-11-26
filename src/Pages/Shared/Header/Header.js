@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../assets/logo/tax.png';
 import { AuthContext } from '../../../../src/Contexts/AuthProvider';
 import './Header.css';
 
@@ -43,9 +42,7 @@ const Header = () => {
 
                     </ul>
                 </div>
-                {/* <Link to='/' className="btn btn-ghost normal-case text-xl">
-                    <img src={logo} alt="" style={{ width: '70%', color: 'white' }}></img>
-                </Link> */}
+
 
             </div>
             <div className="navbar-end hidden lg:flex">

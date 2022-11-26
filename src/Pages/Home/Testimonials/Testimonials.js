@@ -63,7 +63,7 @@ const Testimonials = () => {
                 {data.map(({ avatar, name, review }, index) => {
                     return (
                         <SwiperSlide key={index} className="testimonials">
-                            <div className="client__avatar">
+                            <div className="client__avatar aspect-square">
                                 <img src={avatar} alt="" />
                             </div>
                             <h5 className="client__name">{name}</h5>
