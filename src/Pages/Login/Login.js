@@ -1,82 +1,135 @@
 import React, { useContext, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
-import useToken from '../../hooks/useToken';
-
+import { GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet';
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const [loginError, setLoginError] = useState('');
-    const [loginUserEmail, setLoginUserEmail] = useState('');
-    const [token] = useToken(loginUserEmail);
-    const { signIn } = useContext(AuthContext);
-    const location = useLocation();
+    const { loginUser, setLoading, providerLogin } = useContext(AuthContext);
+    const [error, setError] = useState('');
     const navigate = useNavigate();
-
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-    if (token) {
-        navigate(from, { raplace: true });
-    }
-    const handleLogin = data => {
-        console.log(data);
-        setLoginError('');
-        signIn(data.email, data.password)
-            .then(result => {
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then((result) => {
                 const user = result.user;
                 console.log(user);
-                setLoginUserEmail(data.email);
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        //local storage is easy to use
+                        localStorage.setItem('wheelanes', data.token);
+                        navigate(from, { replace: true });
 
-            })
-            .catch(error => {
-                console.log(error.message)
-                setLoginError(error.message);
+
+                    })
+
             }
-            );
+            )
+            .catch((error) => {
+                console.error(error);
+            })
+
+    }
+    const handleLogin = (event) => {
+
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        loginUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                form.reset();
+                toast.success('Login successfull')
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        //local storage is easy to use
+                        localStorage.setItem('wheelanes', data.token);
+                        navigate(from, { replace: true });
+
+
+                    })
+            })
+            .catch(e => {
+                setError(e.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
     return (
-        <div className='h-[800px] flex justify-center items-center'>
-            <div className='w-96 p-7 border'>
-                <h2 className='text-4xl text-center'>Login</h2>
-                <form onSubmit={handleSubmit(handleLogin)} >
+        <div>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
+            <div className='grid lg:grid-cols-2 sm:grid-cols-1'>
+                <div>
+                    <img src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg" style={{ height: '500px' }} alt=""></img>
+                </div>
+                <div>
+                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mb-10">
+                        <div className="card-body">
+                            <h2 className='text-center font-bold text-2xl'>Login Now!</h2>
+                            <form onSubmit={handleLogin}>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Password</span>
+                                    </label>
+                                    <input type="password" name="password" placeholder="password" className="input input-bordered" required />
 
-                    <div className="form-control w-full max-w-xs">
+                                </div>
+                                <div className="form-control mt-6">
+                                    <button className="btn btn-primary">Login</button>
+                                </div>
+                                <div className="form-control mt-6">
+                                    <h2 className='text-error'>{error}</h2>
+                                </div>
 
-                        <label className="label">
-                            <span className="label-text">Email</span>
-
-                        </label>
-                        <input type="email" {...register("email", {
-                            required: "Email Address is required"
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
+                            </form>
+                            <h6 className='text-center mt-5' style={{ fontSize: '18px' }}>Or, Login In with <button className="btn btn-outline btn-accent btn-sm" onClick={handleGoogleSignIn}>Google</button></h6>
+                            <hr></hr>
+                            <h6 className='text-center mt-5 mb-5'>Don't have an account? <Link to='/register' className='text-accent font-bold'>Register</Link></h6>
+                        </div>
                     </div>
-                    <div className="form-control w-full max-w-xs">
-
-                        <label className="label">
-                            <span className="label-text">Password</span>
-
-                        </label>
-                        <input type="password" {...register("password", {
-                            required: "Password is required",
-                            minLength: { value: 6, message: 'Password must be 6 characters or longer' }
-                        })} className="input input-bordered w-full max-w-xs" />
-                        {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
-                        <label className="label">
-                            <span className="label-text">Forget Password ?</span>
-
-                        </label>
-                    </div>
-
-
-
-                    <input className='btn btn-accent w-full text-white' value="Login" type="submit" />
-                    {loginError && <p>{loginError}</p>}
-                </form>
-                <p>New to Brightest Smile ? <Link to='/signup'>Sign up</Link></p>
-                <div className='divider'>OR</div>
-                <input className='btn btn-outline w-full' value="Google" type="submit" />
+                </div>
             </div>
         </div>
+
+
     );
 };
 

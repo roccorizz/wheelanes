@@ -4,9 +4,9 @@ import { AuthContext } from '../../../../src/Contexts/AuthProvider';
 import './Header.css';
 
 const Header = () => {
-    const { user, SignOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const logout = () => {
-        SignOut()
+        logOut()
             .then(() => { })
             .catch(error => console.error(error))
     }
@@ -45,7 +45,7 @@ const Header = () => {
 
 
             </div>
-            <div className="navbar-end hidden lg:flex">
+            <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal  p-0">
                     {menuItems}
                 </ul>

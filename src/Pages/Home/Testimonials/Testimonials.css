@@ -11,7 +11,7 @@
     border: 1px solid green;
 }
 
-.testimonials {
+#testimonials {
     background: var(--color-bg-variant);
     text-align: center;
     padding: 2rem;

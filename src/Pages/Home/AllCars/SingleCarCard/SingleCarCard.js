@@ -5,30 +5,8 @@ import './SingleCarCard.css';
 import { Helmet } from 'react-helmet';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 
-/***Name
-"chevrolet monte carlo"
-Miles_per_Gallon
-15
-Cylinders
-8
-Displacement
-400
-Horsepower
-150
-Weight_in_lbs
-3761
-Acceleration
-9.5
-Year
-1970
-Origin
-"USA"
-company
-"Toyota"
-about
-"Eu minim enim dolore cupidatat. Eu aliquip laborum non consectetur ani…"
-bodyType
- */
+
+
 const SingleCarCard = () => {
     const car = useLoaderData();
     const { Name, image, description, price, Miles_per_Gallon, Cylinders, Displacement, Horsepower, Acceleration, Year, Origin, company } = car;
@@ -73,20 +51,20 @@ const SingleCarCard = () => {
 
 
                 </div>
-                <h2 className='text-4xl font-bold mb-5 text-center'>{Name}</h2>
+                <h2 className='text-5xl font-bold mb-10 text-center capitalize text-white'>{Name}</h2>
                 <div className='grid grid-cols-2'>
-                    <h3 className='mb-5 text-2xl'><strong>Price :</strong> ${price}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Miles per Gallon :</strong> {Miles_per_Gallon}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Cylinders :</strong> {Cylinders}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Displacement :</strong> {Displacement}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Horsepower :</strong> {Horsepower}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Acceleration :</strong> {Acceleration}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Year :</strong> {Year}</h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Origin :</strong> <span className='text-xl text-blue-500'>{Origin}</span></h3>
-                    <h3 className='mb-5 '><strong className='text-2xl font-semibold'>Company :</strong> <span className='text-xl text-blue-500'>{company}</span></h3>
+                    <h3 className='mb-5 text-2xl'><strong className='text-white'>Price :</strong><span className='text-xl text-red-500 '> ${price}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Miles per Gallon :</strong><span className='text-xl text-white '>{Miles_per_Gallon}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Cylinders :</strong><span className='text-xl text-white '>{Cylinders}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Displacement :</strong> <span className='text-xl text-white '>{Displacement}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Horsepower :</strong> <span className='text-xl text-white '>{Horsepower}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Acceleration :</strong> <span className='text-xl text-white '>{Acceleration}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Year :</strong> <span className='text-xl text-white '>{Year}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl text-blue-500 font-semibold'>Origin :</strong> <span className='text-xl text-white '>{Origin}</span></h3>
+                    <h3 className='mb-5 '><strong className='text-2xl  text-blue-500 font-semibold'>Company :</strong> <span className='text-xl text-white'>{company}</span></h3>
 
                 </div>
-                <p style={{ fontSize: '18px' }}><strong>Description: </strong>{description}</p>
+                <p><strong className='text-2xl  text-blue-500 font-semibold'>Description: </strong><span className='text-lg text-white '>{description}</span></p>
             </div>
         </div>
     );

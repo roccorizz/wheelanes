@@ -5,10 +5,12 @@ const DisplayError = () => {
     const error = useRouteError();
 
     return (
-        <div className='align-center'>
-            <img className='w-2/3 ' src={pagenotfound} alt=''></img>
-            <p className='text-red-500'>Something went wrong!!!</p>
-            <p className='text-red-500'>{error.statusText || error.message}</p>
+        <div className=''>
+            <div className='mx-10'>
+
+                <img className='w-full h-[600px]' src={pagenotfound} alt=''></img>
+            </div>
+            <p className='text-red-500 text-3xl font-bold text-center'>{error.statusText || error.message}</p>
 
         </div>
     );

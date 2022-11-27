@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { AiFillTwitterSquare, AiFillFacebook, AiFillYoutube } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from '../../../assets/logo.png'
-export default function Navbar({ fixed }) {
-    const [navbarOpen, setNavbarOpen] = React.useState(false);
+const Navbar = () => {
+    const [navbarOpen, setNavbarOpen] = useState(false);
     return (
         <>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-cyan-500 mb-3">
@@ -59,3 +59,4 @@ export default function Navbar({ fixed }) {
         </>
     );
 }
+export default Navbar;
