@@ -2,7 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Main from "../../Layout/Main";
 import About from "../../Pages/About/About";
+
+import CarCategory from "../../Pages/Home/AllCars/AllCars/CarCategory";
 import SingleCarCard from "../../Pages/Home/AllCars/SingleCarCard/SingleCarCard";
+import CarsByCategory from "../../Pages/Home/AllCars/AllCars/CarsByCategory";
 
 
 import Home from "../../Pages/Home/Home/Home";
@@ -30,7 +33,6 @@ export const router = createBrowserRouter([
                 path: '/signup',
                 element: <SignUp></SignUp>
             },
-
             {
                 path: '/about',
                 element: <About />
@@ -39,8 +41,19 @@ export const router = createBrowserRouter([
                 element: <SingleCarCard></SingleCarCard>,
                 loader: ({ params }) => fetch(`http://localhost:5000/featured-cars/${params.id}`)
             },
+            {
+                path: '/car-categories',
+                element: <CarCategory></CarCategory>,
+                loader: () => fetch(`http://localhost:5000/allcars`)
+            },
+            {
+                path: '/allcars/:id',
+                element: <CarsByCategory></CarsByCategory>,
+                loader: ({ params }) => fetch(`http://localhost:5000/allcars/byCategory/${params.id}`)
+            }
+
         ]
-    },
+    }
     // {
     //     path: '/dashboard',
     //     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,

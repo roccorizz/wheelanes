@@ -4,9 +4,6 @@ import { useLoaderData } from 'react-router-dom';
 import './SingleCarCard.css';
 import { Helmet } from 'react-helmet';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
-
-
-
 const SingleCarCard = () => {
     const car = useLoaderData();
     const { Name, image, description, price, Miles_per_Gallon, Cylinders, Displacement, Horsepower, Acceleration, Year, Origin, company } = car;
