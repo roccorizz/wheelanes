@@ -1,24 +1,48 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../src/Contexts/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
+import useSeller from '../../../hooks/useSeller';
 import './Header.css';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email)
+    const [isSeller] = useSeller(user?.email)
+    const [userType, setUserType] = useState(null)
     const logout = () => {
         logOut()
             .then(() => { })
             .catch(error => console.error(error))
     }
+
+    useEffect(() => {
+        const type = localStorage.getItem('type')
+        if (type === "seller") {
+            setUserType(type)
+        }
+
+    }, [])
+
     const menuItems = <>
         <li className='font-semibold'><Link to='/'>Home</Link></li>
         <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                 <>
-                    <li className='font-semibold'><Link to='/mywishlist'>My Wishlist</Link></li>
+                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    {
+                        !isSeller && !isAdmin && <>
+                            <li className='font-semibold'><Link to='/mywishlist'>My Wishlist</Link></li>
+                        </>
+                    }
 
-                    <li className='font-semibold'><Link to='/addcar'>Add Car for sale </Link></li>
+
+                    {
+                        userType && (
+                            <li className='font-semibold'><Link to='/addcar'>Add Car for sale </Link></li>
+                        )
+                    }
 
                     <li className='font-semibold'><Link className='btn btn-outline btn-error' onClick={logout}>LogOut</Link></li>
 

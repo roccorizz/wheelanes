@@ -12,6 +12,16 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/Login/Signup/SignUp";
 import DisplayError from "../../Pages/Shared/DisplayError/DisplayError";
+import PrivateRoute from "../../PrivateRoute/PrivateRoute";
+import DashboardLayout from "../../Layout/DashboardLayout";
+import AdminRoute from "../AdminRoute/AdminRoute";
+import AllBuyers from "../../Dashboard/AllUsers/AllBuyers";
+import AllSeller from "../../Dashboard/AllUsers/AllSeller";
+import MyWishlist from "../../Pages/Home/MyWishlist/MyWishlist";
+import AddCar from "../../Dashboard/Dashboard/AddCar/AddCar";
+import ManageCars from "../../Dashboard/Dashboard/ManageCars/ManageCars";
+import Blog from "../../Pages/Home/Home/Blog/Blog";
+import SellerRoute from "../SellerRoute/SellerRoute";
 
 
 export const router = createBrowserRouter([
@@ -36,7 +46,19 @@ export const router = createBrowserRouter([
             {
                 path: '/about',
                 element: <About />
-            }, {
+            },
+            {
+                path: '/mywishlist',
+                element: <MyWishlist></MyWishlist>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
+            },
+
+
+
+            {
                 path: '/featured-cars/:id',
                 element: <SingleCarCard></SingleCarCard>,
                 loader: ({ params }) => fetch(`http://localhost:5000/featured-cars/${params.id}`)
@@ -53,38 +75,47 @@ export const router = createBrowserRouter([
             }
 
         ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
+        children: [
+
+            {
+
+                path: '/dashboard/allusers',
+                element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+
+                path: '/dashboard/allseller',
+                element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
+            },
+            {
+
+                path: '/dashboard/addproduct',
+                element: <SellerRoute><AddCar></AddCar></SellerRoute>
+            },
+            {
+
+                path: '/dashboard/managecars',
+                element: <SellerRoute><ManageCars></ManageCars></SellerRoute>
+            }
+            //         {
+
+            //             path: '/dashboard',
+            //             element: <MyAppointment></MyAppointment>
+            //         },
+
+
+
+            //         {
+
+            //             path: '/dashboard/payment/:id',
+            //             element: <AdminRoute><Payment></Payment></AdminRoute>,
+            //             loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            //         }
+        ]
     }
-    // {
-    //     path: '/dashboard',
-    //     element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
-    //     errorElement: <DisplayError></DisplayError>,
-    //     children: [
-    //         {
-
-    //             path: '/dashboard',
-    //             element: <MyAppointment></MyAppointment>
-    //         },
-    //         {
-
-    //             path: '/dashboard/allusers',
-    //             element: <AdminRoute> <AllUsers></AllUsers></AdminRoute>
-    //         },
-    //         {
-
-    //             path: '/dashboard/adddoctor',
-    //             element: <AdminRoute><AddDoctor></AddDoctor></AdminRoute>
-    //         },
-    //         {
-
-    //             path: '/dashboard/managedoctors',
-    //             element: <AdminRoute><ManageDoctors></ManageDoctors></AdminRoute>
-    //         },
-    //         {
-
-    //             path: '/dashboard/payment/:id',
-    //             element: <AdminRoute><Payment></Payment></AdminRoute>,
-    //             loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
-    //         }
-    //     ]
-    // }
 ])

@@ -8,7 +8,7 @@ const CarsByCategory = () => {
     return (
         <div>
             <Helmet>
-                <title>Featured Cars</title>
+                <title>Cars</title>
             </Helmet>
             <div id="service-hero" className="hero service-hero relative">
                 <div className="hero-overlay bg-opacity-60"></div>

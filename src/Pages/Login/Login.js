@@ -17,12 +17,11 @@ const Login = () => {
         providerLogin(googleProvider)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 const currentUser = {
                     email: user.email
                 }
                 fetch('http://localhost:5000/jwt', {
-                    method: 'POST',
+                    method: 'GET',
                     headers: {
                         'content-type': 'application/json'
                     },
@@ -35,7 +34,6 @@ const Login = () => {
                         localStorage.setItem('wheelanes', data.token);
                         navigate(from, { replace: true });
 
-
                     })
 
             }
@@ -46,7 +44,6 @@ const Login = () => {
 
     }
     const handleLogin = (event) => {
-
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -54,7 +51,6 @@ const Login = () => {
         loginUser(email, password)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
                 setError('');
                 form.reset();
                 toast.success('Login successfull')
@@ -70,11 +66,11 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+
                         //local storage is easy to use
                         localStorage.setItem('wheelanes', data.token);
+                        localStorage.setItem('role', data.user.role);
                         navigate(from, { replace: true });
-
 
                     })
             })
@@ -122,7 +118,7 @@ const Login = () => {
                             </form>
                             <h6 className='text-center mt-5' style={{ fontSize: '18px' }}>Or, Login In with <button className="btn btn-outline btn-accent btn-sm" onClick={handleGoogleSignIn}>Google</button></h6>
                             <hr></hr>
-                            <h6 className='text-center mt-5 mb-5'>Don't have an account? <Link to='/register' className='text-accent font-bold'>Register</Link></h6>
+                            <h6 className='text-center mt-5 mb-5'>Don't have an account? <Link to='/signup' className='text-accent font-bold'>Register</Link></h6>
                         </div>
                     </div>
                 </div>

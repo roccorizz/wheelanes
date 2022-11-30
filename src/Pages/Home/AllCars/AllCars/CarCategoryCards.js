@@ -18,7 +18,7 @@ const CarCategoryCards = ({ carcategoryy }) => {
                 <h2 className="card-title text-1xl justify-center capitalize">{bodyType}</h2>
                 <div className='flex justify-end'>
                     <Link to={`/allcars/${category_id}`} className='btn btn-outline btn-secondary btn-sm'>
-                        View Details
+                        View Items
                     </Link>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 import useToken from '../../../hooks/useToken';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('')
     const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
@@ -23,14 +23,13 @@ const SignUp = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('User Created Successfully')
                 const userInfo = {
                     displayName: (data.firstName + " " + data.lastName)
                 }
-                updateUser(userInfo)
+                updateUserProfile(userInfo)
                     .then(() => {
                         let name = data.firstName + " " + data.lastName;
-                        saveUser(name, data.email);
+                        saveUser(name, data.email, data.type);
                     })
                     .catch(err => console.log(err))
             })
@@ -40,8 +39,8 @@ const SignUp = () => {
             }
             );
     }
-    const saveUser = (name, email) => {
-        const user = { name, email };
+    const saveUser = (name, email, role) => {
+        const user = { name, email, role };
         fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
@@ -51,6 +50,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
+                toast.success('User Created Successfully')
                 setCreatedUserEmail(email);
 
             })
@@ -96,6 +96,23 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
                     </div>
+
+
+                    <div className="form-control w-full max-w-xs">
+                        <label className="label">
+                            <span className="label-text">I am a</span>
+                        </label>
+                        <select  {...register("type", {
+                            required: "Type required"
+                        })} className="select select-bordered">
+                            <option disabled selected>Pick one</option>
+                            <option value='buyer'>Buyer</option>
+                            <option value='seller'>Seller</option>
+
+                        </select>
+                    </div>
+
+
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
@@ -105,7 +122,7 @@ const SignUp = () => {
                         <input type="password" {...register("password", {
                             required: "Password is required",
                             minLength: { value: 6, message: 'Password must be 6 characters or longer' },
-                            pattern: { value: /(?=.*[A-Z])(?=.*[!%()^@#$&*])(?=.*[0-9])(?=.*[a-z])/, message: "Password must be strong" }
+                            // pattern: { value: /(?=.*[A-Z])(?=.*[!%()^@#$&*])(?=.*[0-9])(?=.*[a-z])/, message: "Password must be strong" }
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
 

@@ -35,8 +35,8 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     }
     const logOut = () => {
-
         setLoading(true);
+        localStorage.removeItem('wheelanes')
         return signOut(auth);
     }
     const authinfo = {
