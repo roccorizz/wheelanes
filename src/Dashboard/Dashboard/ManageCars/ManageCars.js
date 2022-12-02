@@ -41,7 +41,7 @@ const ManageCars = () => {
                     refetch();
                     toast.success(` Data deleted successfully`)
                 }
-                console.log(data)
+
             })
     }
 
@@ -59,7 +59,7 @@ const ManageCars = () => {
                     refetch();
                     toast.success(`Data updates successfully`)
                 }
-                console.log(data)
+
             })
     }
 

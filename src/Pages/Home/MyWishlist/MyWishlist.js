@@ -21,8 +21,8 @@ const MyWishlist = (props) => {
                 }),
             })
             alert("has been added")
-            console.log(boards)
-            console.log("count+1")
+
+
         } else {
             setWishCount(prev => prev - 1)
             await fetch(`https://27.96.131.85:8443/api/likeBoards/${boards.id}`, {
@@ -33,8 +33,8 @@ const MyWishlist = (props) => {
                 })
             })
             alert("Removed from wishlist.")
-            console.log(boards)
-            console.log("count-1")
+
+
         }
         setIsWishAdd(prev => !prev);
     }
@@ -45,7 +45,7 @@ const MyWishlist = (props) => {
             await axios.get(`https://27.96.131.85:8443/api/boards/${id}`, {
                 withCredentials: true,
             }).then((res) => {
-                console.log(res);
+
                 setBoards(res.data);
                 setImages(res.data.boardImages);
             });

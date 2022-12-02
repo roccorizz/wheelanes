@@ -52,7 +52,7 @@ const AddCar = () => {
 
                         .then(result => {
                             if (result.insertedId) {
-                                console.log(result);
+
                                 toast.success(`${data.carName} is added successfully`);
                                 navigate('/dashboard/managecars')
                             }

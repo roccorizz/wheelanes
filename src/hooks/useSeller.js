@@ -8,7 +8,7 @@ const useSeller = email => {
             fetch(`https://wheelanes-server.vercel.app/users/seller/${email}`)
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+
                     setIsSeller(data.isSeller);
                     setIsSellerLoading(false);
                 })

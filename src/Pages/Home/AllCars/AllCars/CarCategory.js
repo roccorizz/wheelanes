@@ -11,7 +11,7 @@ const CarCategory = () => {
             .then(data => setCars(data))
 
     }, [])
-    console.log(cars)
+
     return (
         <div>
             <Helmet>

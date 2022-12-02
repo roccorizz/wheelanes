@@ -21,7 +21,7 @@ const FeaturedCarsCards = ({ featuredcar }) => {
             <div className="card-body">
                 <h2 className="card-title text-1xl capitalize">{carName}</h2>
                 <div className="card-actions justify-start">
-                    <h3 className='text-black-600' style={{ fontSize: '17px' }}><strong>Price</strong> : ${resale_price}</h3>
+                    <h3 className='text-black-600' style={{ fontSize: '17px' }}><strong>Resale Price</strong> : ${resale_price}</h3>
                 </div>
                 <div className="card-actions justify-start">
                     <h3 className='text-black-300' style={{ fontSize: '17px', height: '100px' }}><strong>Description</strong> :{description.substring(0, limit) + "..."}</h3>

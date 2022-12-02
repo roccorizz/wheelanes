@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MyOrders = () => {
 
@@ -47,7 +48,7 @@ const MyOrders = () => {
                                 <td>{item.meeting_location}</td>
                                 <td>{item.payment}</td>
                                 <td>
-                                    <button htmlFor="confirmation-modal" className="btn btn-success text-white mr-5">Pay</button>
+                                    <Link to={'/dashboard/myorders/payment'} htmlFor="confirmation-modal" className="btn btn-success text-white mr-5">Pay</Link>
                                 </td>
                             </tr>
                         ))

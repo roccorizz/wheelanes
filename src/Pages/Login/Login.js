@@ -30,7 +30,7 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+
                         //local storage is easy to use
                         localStorage.setItem('wheelanes', data.token);
                         localStorage.setItem('role', "buyer");

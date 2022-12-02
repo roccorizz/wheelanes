@@ -17,12 +17,12 @@ const SignUp = () => {
     }
 
     const handleSignup = (data) => {
-        console.log(data)
+
         setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+
                 const userInfo = {
                     displayName: (data.firstName + " " + data.lastName)
                 }

@@ -15,7 +15,7 @@ const AllSeller = () => {
 
 
     const handleDelete = (user) => {
-        fetch(`https://wheelanes-server.vercel.app/users/${user._id}`, {
+        fetch(`https://wheelanes-server.vercel.app/users/${user?._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('wheelanes')}`
