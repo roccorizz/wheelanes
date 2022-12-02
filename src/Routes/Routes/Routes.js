@@ -110,9 +110,9 @@ export const router = createBrowserRouter([
                 element: <MyOrders></MyOrders>
             },
             {
-
-                path: '/dashboard/myorders/payment',
-                element: <Payment></Payment>
+                path: '/dashboard/myorders/:id',
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`https://wheelanes-server.vercel.app/bookings/${params.id}`)
             }
 
 

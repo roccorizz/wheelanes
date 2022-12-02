@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+
 import CarCategoryCards from './CarCategoryCards';
 
 
@@ -14,9 +14,7 @@ const CarCategory = () => {
 
     return (
         <div>
-            <Helmet>
-                <title>Car Categories</title>
-            </Helmet>
+
             <div id="service-hero" className="hero service-hero relative">
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center  rounded">
