@@ -62,17 +62,17 @@ export const router = createBrowserRouter([
             {
                 path: '/featured-cars/:id',
                 element: <PrivateRoute><SingleCarCard></SingleCarCard></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/featured-cars/${params.id}`)
+                loader: ({ params }) => fetch(`https://wheelanes-server.vercel.app/featured-cars/${params.id}`)
             },
             {
                 path: '/car-categories',
                 element: <CarCategory></CarCategory>,
-                loader: () => fetch(`http://localhost:5000/allcars`)
+                loader: () => fetch(`https://wheelanes-server.vercel.app/allcars`)
             },
             {
                 path: '/allcars/:id',
                 element: <CarsByCategory></CarsByCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/allcars/byCategory/${params.id}`)
+                loader: ({ params }) => fetch(`https://wheelanes-server.vercel.app/allcars/byCategory/${params.id}`)
             }
 
         ]

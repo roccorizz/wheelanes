@@ -16,7 +16,7 @@ const AddCar = () => {
     const { data: carCategories, isLoading } = useQuery({
         queryKey: ['bodyType'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/car-categories');
+            const res = await fetch('https://wheelanes-server.vercel.app/car-categories');
             const data = await res.json();
             return data;
         }
@@ -39,7 +39,7 @@ const AddCar = () => {
                     data.status = "Active"
                     data.isFeatured = false
                     //save doctor information to the database
-                    fetch('http://localhost:5000/allcars', {
+                    fetch('https://wheelanes-server.vercel.app/allcars', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -69,8 +69,9 @@ const AddCar = () => {
         return <Loading></Loading>
     }
     return (
-        <div className=' p-7 border'>
-            <h2 className='text-4xl'>Add a Car</h2>
+        <div className=' p-7 border bg-black'>
+            <h2 className='text-4xl text-purple-600 font-bold text-center p-4 underline underline-offset-8'>Add a Car</h2>
+
             <form onSubmit={handleSubmit(handleAddCar)} >
 
                 <div className='grid grid-cols-2 gap-3'>
@@ -79,7 +80,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Name</span>
+                            <span className="label-text text-white text-white">Name</span>
 
                         </label>
                         <input type="text" {...register("carName", {
@@ -92,7 +93,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Origin</span>
+                            <span className="label-text text-white">Origin</span>
 
                         </label>
                         <input type="text" {...register("origin", {
@@ -105,7 +106,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Price</span>
+                            <span className="label-text text-white">Price</span>
 
                         </label>
                         <input type="number" {...register("price", {
@@ -116,7 +117,7 @@ const AddCar = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text"> Resale Price</span>
+                            <span className="label-text text-white"> Resale Price</span>
 
                         </label>
                         <input type="number" {...register("resale_price", {
@@ -127,7 +128,7 @@ const AddCar = () => {
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label">
-                            <span className="label-text"> Years of used</span>
+                            <span className="label-text text-white"> Years of used</span>
 
                         </label>
                         <input type="number" {...register("years_of_used", {
@@ -140,7 +141,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Body Type</span>
+                            <span className="label-text text-white">Body Type</span>
                         </label>
                         <select
                             {...register('carCategory')}
@@ -159,7 +160,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text"> Description</span>
+                            <span className="label-text text-white"> Description</span>
 
                         </label>
                         <textarea cols={4} rows={4} {...register("description", {
@@ -173,7 +174,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text"> Miles per gallon</span>
+                            <span className="label-text text-white"> Miles per gallon</span>
 
                         </label>
                         <input type="number" {...register("milespergallon", {
@@ -185,7 +186,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Year of Buying</span>
+                            <span className="label-text text-white">Year of Buying</span>
 
                         </label>
                         <input type="date" {...register("buyingyear", {
@@ -197,7 +198,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Company</span>
+                            <span className="label-text text-white">Company</span>
 
                         </label>
                         <input type="text" {...register("company", {
@@ -209,7 +210,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Photo</span>
+                            <span className="label-text text-white">Photo</span>
 
                         </label>
                         <input type="file" {...register("image", {
@@ -222,7 +223,7 @@ const AddCar = () => {
                     <div className="form-control w-full max-w-xs">
 
                         <label className="label">
-                            <span className="label-text">Condition</span>
+                            <span className="label-text text-white">Condition</span>
                         </label>
                         <select
                             {...register('condition')}

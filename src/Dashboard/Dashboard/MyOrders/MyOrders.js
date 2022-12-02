@@ -6,7 +6,7 @@ const MyOrders = () => {
     const { data: bookings = [], refetch } = useQuery({
         queryKey: ['my_booking'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/bookings', {
+            const res = await fetch('https://wheelanes-server.vercel.app/bookings', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('wheelanes')} `
                 }
@@ -15,6 +15,9 @@ const MyOrders = () => {
             return data;
         }
     });
+
+
+
 
 
     return (

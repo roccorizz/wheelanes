@@ -4,32 +4,17 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <div>
-            <footer
-                // style={{
-                //     background: `url(${footer})`,
-                //     backgroundSize: 'cover'
-                // }} 
-                className="footer p-10 text-base-content">
+            <footer className="footer p-10 text-center">
+
                 <div>
-                    <span className="footer-title">Services</span>
-                    <Link to='/' className="link link-hover">Branding</Link>
-                    <Link to='/' className="link link-hover">Design</Link>
-                    <Link to='/' className="link link-hover">Marketing</Link>
-                    <Link to='/' className="link link-hover">Advertisement</Link>
+                    <span className="footer-title">Wheelanes</span>
+                    <div className='grid grid-cols-2 gap-4'>
+
+                        <Link to='/' className="link link-hover">About us</Link>
+                        <Link to='/' className="link link-hover">Contact</Link>
+                    </div>
                 </div>
-                <div>
-                    <span className="footer-title">Company</span>
-                    <Link to='/' className="link link-hover">About us</Link>
-                    <Link to='/' className="link link-hover">Contact</Link>
-                    <Link to='/' className="link link-hover">Jobs</Link>
-                    <Link to='/' className="link link-hover">Press kit</Link>
-                </div>
-                <div>
-                    <span className="footer-title">Legal</span>
-                    <Link to='/' className="link link-hover">Terms of use</Link>
-                    <Link to='/' className="link link-hover">Privacy policy</Link>
-                    <Link to='/' className="link link-hover">Cookie policy</Link>
-                </div>
+
             </footer>
 
         </div>

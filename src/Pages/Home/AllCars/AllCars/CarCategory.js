@@ -6,7 +6,7 @@ import CarCategoryCards from './CarCategoryCards';
 const CarCategory = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/car-categories')
+        fetch('https://wheelanes-server.vercel.app/car-categories')
             .then(res => res.json())
             .then(data => setCars(data))
 

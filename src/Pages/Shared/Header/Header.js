@@ -25,30 +25,23 @@ const Header = () => {
     }, [])
 
     const menuItems = <>
-        <li className='font-semibold'><Link to='/'>Home</Link></li>
-        <li className='font-semibold'><Link to='/blog'>Blog</Link></li>
+        <li className='font-semibold text-blue-400 text-xl '><Link to='/'>Home</Link></li>
+        <li className='font-semibold text-blue-400'><Link to='/blog'>Blog</Link></li>
         {
             user?.uid ?
                 <>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li className='font-semibold text-blue-400'><Link to="/dashboard">Dashboard</Link></li>
                     {
                         !isSeller && !isAdmin && <>
-                            <li className='font-semibold'><Link to='/mywishlist'>My Wishlist</Link></li>
+                            <li className='font-semibold text-blue-400'><Link to='/mywishlist'>My Wishlist</Link></li>
                         </>
-                    }
-
-
-                    {
-                        userType && (
-                            <li className='font-semibold'><Link to='/addcar'>Add Car for sale </Link></li>
-                        )
                     }
 
                     <li className='font-semibold'><Link className='btn btn-outline btn-error' onClick={logout}>LogOut</Link></li>
 
                 </> :
                 <>
-                    <li className='font-semibold'><Link to='/login'>Login</Link></li>
+                    <li className='font-semibold text-blue-400'><Link to='/login'>Login</Link></li>
                 </>
         }
 

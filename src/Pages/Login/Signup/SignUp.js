@@ -41,7 +41,7 @@ const SignUp = () => {
     }
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://wheelanes-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -52,7 +52,7 @@ const SignUp = () => {
             .then(data => {
                 toast.success('User Created Successfully')
                 setCreatedUserEmail(email);
-
+                navigate('/');
             })
 
     }

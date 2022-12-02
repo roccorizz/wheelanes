@@ -15,7 +15,7 @@ const ManageCars = () => {
         queryKey: ['cars'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/allcars', {
+                const res = await fetch('https://wheelanes-server.vercel.app/allcars', {
                     headers: {
                         authorization: `bearer ${localStorage.getItem('wheelanes')} `
                     }
@@ -29,7 +29,7 @@ const ManageCars = () => {
         }
     });
     const handleDeleteCar = id => {
-        fetch(`http://localhost:5000/allcars/${id}`, {
+        fetch(`https://wheelanes-server.vercel.app/allcars/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('wheelanes')}`
@@ -47,7 +47,7 @@ const ManageCars = () => {
 
 
     const handleUpdate = id => {
-        fetch(`http://localhost:5000/allcars/${id}`, {
+        fetch(`https://wheelanes-server.vercel.app/allcars/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('wheelanes')}`

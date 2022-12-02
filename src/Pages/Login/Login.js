@@ -17,10 +17,11 @@ const Login = () => {
         providerLogin(googleProvider)
             .then((result) => {
                 const user = result.user;
+
                 const currentUser = {
                     email: user.email
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://wheelanes-server.vercel.app/jwt', {
                     method: 'GET',
                     headers: {
                         'content-type': 'application/json'
@@ -32,6 +33,7 @@ const Login = () => {
                         console.log(data);
                         //local storage is easy to use
                         localStorage.setItem('wheelanes', data.token);
+                        localStorage.setItem('role', "buyer");
                         navigate(from, { replace: true });
 
                     })
@@ -58,7 +60,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://wheelanes-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

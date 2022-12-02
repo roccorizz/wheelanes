@@ -19,7 +19,7 @@ const DashboardLayout = () => {
 
     }, [])
     return (
-        <div>
+        <div >
             <Header></Header>
             <div className="drawer drawer-mobile">
                 <input id="dashboard-drawer" type="checkbox" className="drawer-toggle" />
@@ -32,24 +32,24 @@ const DashboardLayout = () => {
                     <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80  text-base-content">
 
-                        <li><Link to="/dashboard">My Dashboard</Link></li>
+
                         {
                             isAdmin && <>
-                                <li><Link to="/dashboard/allusers">All Buyers</Link></li>
-                                <li><Link to="/dashboard/allseller">All Sellers</Link></li>
-                                <li><Link to="/dashboard/reporteditems">Reported Items</Link></li>
+                                <li className='font-bold text-blue-400'><Link to="/dashboard/allusers">All Buyers</Link></li>
+                                <li className='font-bold text-yellow-400'><Link to="/dashboard/allseller">All Sellers</Link></li>
+                                <li className='font-bold text-red-500'><Link to="/dashboard/reporteditems">Reported Items</Link></li>
 
                             </>
                         }
                         {
                             isSeller && <>
-                                <li><Link to="/dashboard/addproduct">Add a Car</Link></li>
-                                <li><Link to="/dashboard/managecars">Manage Cars</Link></li>
+                                <li className='font-bold text-2xl text-green-400'><Link to="/dashboard/addproduct">Add a Car</Link></li>
+                                <li className='font-bold text-2xl text-blue-400'><Link to="/dashboard/managecars">Manage Cars</Link></li>
                             </>
                         }
                         {
                             userType && <>
-                                <li><Link to="/dashboard/myorders">My Orders</Link></li>
+                                <li className='font-bold text-2xl text-green-400' ><Link to="/dashboard/myorders">My Orders</Link></li>
                             </>
                         }
                     </ul>

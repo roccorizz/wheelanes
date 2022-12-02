@@ -6,14 +6,14 @@ const AllBuyers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users?role=buyer');
+            const res = await fetch('https://wheelanes-server.vercel.app/users?role=buyer');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDelete = (user) => {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        fetch(`https://wheelanes-server.vercel.app/users/${user._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('wheelanes')}`

@@ -5,7 +5,7 @@ import FeaturedCarsCards from './FeaturedCarsCards/FeaturedCarsCards';
 const FeaturedCars = () => {
     const [cars, setCars] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/featured-cars')
+        fetch('https://wheelanes-server.vercel.app/featured-cars')
             .then(res => res.json())
             .then(data => setCars(data))
 
