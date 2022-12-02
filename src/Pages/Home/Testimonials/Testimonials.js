@@ -20,27 +20,27 @@ const Testimonials = () => {
     const data = [
         {
             avatar: AVTR1,
-            name: "Ernest Achiever",
+            name: "Annie Manie",
             review:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at adipisci illo voluptatibus ex alias porro excepturi ad ratione aut,eveniet quidem est totam modi aperiam exercitationem inventore? Quod, animi."
+                "Very good service indeed.They are the best"
         },
         {
             avatar: AVTR2,
-            name: "Ernest Achiever",
+            name: "Justin Cook",
             review:
-                "Lorem ipsum dolor sit amet consecteturex alias porro excepturi ad ratione aut,eveniet quidem est totam modi aperiam exercitationem inventore? Quod, animi."
+                "One of the best platform I've ever seen in my life."
         },
         {
             avatar: AVTR3,
-            name: "Ernest Achiever",
+            name: "Taylor Swift",
             review:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at adipisci illo voluptatibus ex alias porro excepturi ad ratione aut,eveniet quidem est totam modi aperiam exercitationem inventore? Quod, animi."
+                "They are doing great no doubt.Best of luck,guys."
         },
         {
             avatar: AVTR4,
-            name: "Ernest Achiever",
+            name: "Lady Gaga",
             review:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at adipisci illo voluptatibus ex alias porro excepturi ad ratione aut,eveniet quidem est totam modi aperiam exercitationem inventore? Quod, animi."
+                "I am really blessed to have a platform like that.They made it easy."
         }
     ];
     return (
@@ -49,7 +49,6 @@ const Testimonials = () => {
 
             <Swiper
                 className=" testimonials__container"
-                // install Swiper modules
                 modules={[Pagination]}
                 spaceBetween={40}
                 slidesPerView={1}
@@ -65,25 +64,14 @@ const Testimonials = () => {
                             <div className="client__avatar aspect-square">
                                 <img src={avatar} alt="" />
                             </div>
-                            <h5 className="text-center">{name}</h5>
-                            <small className="client_review">{review}</small>
+                            <h2 className="text-center text-blue-200 text-2xl">{name}</h2>
+                            <p className="client_review">{review}</p>
                         </SwiperSlide>
                     );
                 })}
             </Swiper>
 
-            {/* <article className="testimonials">
-          <div className="client__avatar">
-            <img src={AVTR1} alt="" />
-          </div>
-          <h5 className="client__name">Ernest Achiever</h5>
-          <small className="client_review">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus at
-            adipisci illo voluptatibus ex alias porro excepturi ad ratione aut,
-            eveniet quidem est totam modi aperiam exercitationem inventore?
-            Quod, animi.
-          </small>
-        </article> */}
+
         </section>
     );
 };

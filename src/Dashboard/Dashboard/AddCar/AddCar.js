@@ -9,6 +9,7 @@ import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddCar = () => {
     const { user, loading } = useContext(AuthContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const navigate = useNavigate();
@@ -34,23 +35,33 @@ const AddCar = () => {
             .then(imgData => {
                 if (imgData.success) {
                     data.image = imgData.data.url
-                    data.seller = user._id
+                    data.seller = user.email
+                    data.status = "Active"
+                    data.isFeatured = false
                     //save doctor information to the database
                     fetch('http://localhost:5000/allcars', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
-                            authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            authorization: `bearer ${localStorage.getItem('wheelanes')}`
                         },
                         body: JSON.stringify(data)
 
                     })
                         .then(res => res.json())
+
                         .then(result => {
-                            console.log(result);
-                            toast.success(`${data.carName} is added successfully`);
-                            navigate('/dashboard/managecars')
-                        })
+                            if (result.insertedId) {
+                                console.log(result);
+                                toast.success(`${data.carName} is added successfully`);
+                                navigate('/dashboard/managecars')
+                            }
+                            else {
+                                toast.success(`${data.carName} is fake`);
+                            }
+
+                        }
+                        )
                 }
             })
     }
@@ -138,12 +149,26 @@ const AddCar = () => {
                             {
                                 carCategories.map(car => <option
                                     key={car._id}
-                                    value={car.bodyType}
+                                    value={car.category_id}
                                 >{car.bodyType}</option>)
                             }
                         </select>
 
                     </div>
+
+                    <div className="form-control w-full max-w-xs">
+
+                        <label className="label">
+                            <span className="label-text"> Description</span>
+
+                        </label>
+                        <textarea cols={4} rows={4} {...register("description", {
+                            required: "Description is required"
+                        })} className="input input-bordered w-full max-w-xs" />
+
+                        {errors.Name && <p className='text-red-600'>{errors.Name?.message}</p>}
+                    </div>
+
 
                     <div className="form-control w-full max-w-xs">
 

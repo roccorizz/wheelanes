@@ -8,11 +8,11 @@
     overflow: hidden;
     border-radius: 50%;
     margin: 0 auto 1rem;
-    border: 1px solid green;
+    border: 2px solid green;
 }
 
-#testimonials {
-    background: var(--color-bg-variant);
+.testimonials {
+    background: blueviolet;
     text-align: center;
     padding: 2rem;
     border-radius: 2rem;
@@ -21,15 +21,16 @@
 }
 
 .client_review {
-    color: brown;
-    font-weight: 300;
+    color: white;
+    font-weight: 300px;
     display: block;
     width: 80%;
     margin: 0.8rem auto 0;
 }
 
 .swiper-pagination-clickable .swiper-pagination-bullet-active {
-    background: var(--color-primary);
+    background-color: aqua;
+
 }
 
 /* ======media queries for tablets(medium devices) =========*/

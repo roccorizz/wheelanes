@@ -22,6 +22,7 @@ import AddCar from "../../Dashboard/Dashboard/AddCar/AddCar";
 import ManageCars from "../../Dashboard/Dashboard/ManageCars/ManageCars";
 import Blog from "../../Pages/Home/Home/Blog/Blog";
 import SellerRoute from "../SellerRoute/SellerRoute";
+import MyOrders from "../../Dashboard/Dashboard/MyOrders/MyOrders";
 
 
 export const router = createBrowserRouter([
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
 
             {
                 path: '/featured-cars/:id',
-                element: <SingleCarCard></SingleCarCard>,
+                element: <PrivateRoute><SingleCarCard></SingleCarCard></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/featured-cars/${params.id}`)
             },
             {
@@ -101,21 +102,14 @@ export const router = createBrowserRouter([
 
                 path: '/dashboard/managecars',
                 element: <SellerRoute><ManageCars></ManageCars></SellerRoute>
+            },
+            {
+
+                path: '/dashboard/myorders',
+                element: <MyOrders></MyOrders>
             }
-            //         {
-
-            //             path: '/dashboard',
-            //             element: <MyAppointment></MyAppointment>
-            //         },
 
 
-
-            //         {
-
-            //             path: '/dashboard/payment/:id',
-            //             element: <AdminRoute><Payment></Payment></AdminRoute>,
-            //             loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
-            //         }
         ]
     }
 ])

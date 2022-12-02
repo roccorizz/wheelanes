@@ -17,7 +17,7 @@ const ManageCars = () => {
             try {
                 const res = await fetch('http://localhost:5000/allcars', {
                     headers: {
-                        authorization: `bearer ${localStorage.getItem('accessToken')} `
+                        authorization: `bearer ${localStorage.getItem('wheelanes')} `
                     }
                 });
                 const data = await res.json();
@@ -28,18 +28,36 @@ const ManageCars = () => {
             }
         }
     });
-    const handleDeleteCar = car => {
-        fetch(`http://localhost:5000/allcars/${car._id}`, {
+    const handleDeleteCar = id => {
+        fetch(`http://localhost:5000/allcars/${id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('wheelanes')}`
             }
         })
             .then(res => res.json())
             .then(data => {
                 if (data.deletedCount > 0) {
                     refetch();
-                    toast.success(` ${car.Name} deleted successfully`)
+                    toast.success(` Data deleted successfully`)
+                }
+                console.log(data)
+            })
+    }
+
+
+    const handleUpdate = id => {
+        fetch(`http://localhost:5000/allcars/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('wheelanes')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    refetch();
+                    toast.success(`Data updates successfully`)
                 }
                 console.log(data)
             })
@@ -56,10 +74,10 @@ const ManageCars = () => {
 
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>S/L</th>
                             <th>Avatar</th>
                             <th>Name</th>
-                            <th>Body Type</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -75,10 +93,13 @@ const ManageCars = () => {
                                         <img src={car.image} alt="" />
                                     </div>
                                 </div></td>
-                                <td>{car.Name}</td>
-                                <td>{car.bodyType}</td>
+                                <td>{car.carName}</td>
+                                <td>{car.status}</td>
                                 <td>
-                                    <label onClick={() => setdeletingCar(car)} htmlFor="confirmation-modal" className="btn btn-error text-white">Delete</label>
+
+                                    <button disabled={car.isFeatured ? true : false} onClick={() => handleUpdate(car._id)} htmlFor="confirmation-modal" className="btn btn-success text-white mr-5">Set Featured</button>
+
+                                    <button onClick={() => handleDeleteCar(car._id)} htmlFor="confirmation-modal" className="btn btn-error text-white">Delete</button>
                                 </td>
 
                             </tr>)

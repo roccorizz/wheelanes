@@ -16,7 +16,7 @@ const AllBuyers = () => {
         fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('wheelanes')}`
             }
         })
             .then(res => res.json())
@@ -27,6 +27,9 @@ const AllBuyers = () => {
                 }
             })
     }
+
+
+
     return (
         <div>
             <h2 className='text-2xl'>All Users</h2>

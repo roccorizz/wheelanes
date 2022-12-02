@@ -17,7 +17,7 @@ const Header = () => {
     }
 
     useEffect(() => {
-        const type = localStorage.getItem('type')
+        const type = localStorage.getItem('role')
         if (type === "seller") {
             setUserType(type)
         }

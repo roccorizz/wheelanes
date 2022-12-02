@@ -54,6 +54,7 @@ const Login = () => {
                 setError('');
                 form.reset();
                 toast.success('Login successfull')
+
                 const currentUser = {
                     email: user.email
                 }

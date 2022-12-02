@@ -18,7 +18,7 @@ const AllSeller = () => {
         fetch(`http://localhost:5000/users/${user._id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('wheelanes')}`
             }
         })
             .then(res => res.json())

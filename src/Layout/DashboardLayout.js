@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../hooks/useAdmin';
@@ -10,6 +10,14 @@ const DashboardLayout = () => {
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
+    const [userType, setUserType] = useState(null)
+    useEffect(() => {
+        const type = localStorage.getItem('role')
+        if (type === "buyer") {
+            setUserType(type)
+        }
+
+    }, [])
     return (
         <div>
             <Header></Header>
@@ -39,11 +47,16 @@ const DashboardLayout = () => {
                                 <li><Link to="/dashboard/managecars">Manage Cars</Link></li>
                             </>
                         }
+                        {
+                            userType && <>
+                                <li><Link to="/dashboard/myorders">My Orders</Link></li>
+                            </>
+                        }
                     </ul>
 
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
