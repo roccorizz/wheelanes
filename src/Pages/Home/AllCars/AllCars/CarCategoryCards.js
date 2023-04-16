@@ -9,7 +9,7 @@ const CarCategoryCards = ({ carcategoryy }) => {
             <figure>
                 <PhotoProvider>
                     <PhotoView src={CategoryImage}>
-                        <img src={CategoryImage} className='h-48' alt="categoryimage" />
+                        <img src={CategoryImage} className='h-60 w-full' alt="categoryimage" />
                     </PhotoView>
                 </PhotoProvider>
 
@@ -17,7 +17,7 @@ const CarCategoryCards = ({ carcategoryy }) => {
             <div className="card-body  align-self">
                 <h2 className="card-title text-1xl justify-center capitalize">{bodyType}</h2>
                 <div className='flex justify-end'>
-                    <Link to={`/allcars/${category_id}`} className='btn btn-outline btn-secondary btn-sm'>
+                    <Link to={`/allcars/${category_id}`} className='btn btn-outline bg-cyan-500 text-white btn-sm'>
                         View Items
                     </Link>
                 </div>

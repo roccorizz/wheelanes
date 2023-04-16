@@ -12,7 +12,6 @@
 }
 
 .testimonials {
-    background: blueviolet;
     text-align: center;
     padding: 2rem;
     border-radius: 2rem;
@@ -29,7 +28,7 @@
 }
 
 .swiper-pagination-clickable .swiper-pagination-bullet-active {
-    background-color: aqua;
+    background-color: cyan;
 
 }
 

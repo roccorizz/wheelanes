@@ -13,7 +13,7 @@ const FeaturedCarsCards = ({ featuredcar }) => {
             <figure>
                 <PhotoProvider>
                     <PhotoView src={image}>
-                        <img src={image} className='h-48' alt="" />
+                        <img src={image} className='h-52 w-full' alt="" />
                     </PhotoView>
                 </PhotoProvider>
 
@@ -21,13 +21,13 @@ const FeaturedCarsCards = ({ featuredcar }) => {
             <div className="card-body">
                 <h2 className="card-title text-1xl capitalize">{carName}</h2>
                 <div className="card-actions justify-start">
-                    <h3 className='text-black-600' style={{ fontSize: '17px' }}><strong>Resale Price</strong> : ${resale_price}</h3>
+                    <h3 className='text-black-600' style={{ fontSize: '17px' }}><strong>Resale Price</strong> : <span className='text-red-600 font-bold text-xl'>{resale_price}$</span></h3>
                 </div>
                 <div className="card-actions justify-start">
                     <h3 className='text-black-300' style={{ fontSize: '17px', height: '100px' }}><strong>Description</strong> :{description.substring(0, limit) + "..."}</h3>
                 </div>
                 <div className='flex justify-end'>
-                    <Link to={`/featured-cars/${_id}`} className='btn btn-outline btn-secondary btn-sm'>
+                    <Link to={`/featured-cars/${_id}`} className='btn btn-outline bg-cyan-500 text-white btn-sm'>
                         View Details
                     </Link>
                 </div>

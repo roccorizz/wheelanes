@@ -14,17 +14,17 @@ const FeaturedCars = () => {
     return (
         <div>
 
-            <div id="service-hero" className="hero service-hero relative">
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center  rounded">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl text-base-200 font-bold">Featured Cars</h1>
+            <div id="service-hero">
 
-                    </div>
-                </div>
+
+
+                <h1 className="mt-10 mb-2 text-xl md:text-2xl lg:text-4xl text-cyan-500 font-bold md:text-left text-center">FEATURED CARS</h1><hr className='py-2' />
+
+
+
             </div>
 
-            <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-12 mb-5'>
+            <div className='grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 mb-5 mx-auto '>
                 {
                     cars.map(car => <FeaturedCarsCards key={car._id} featuredcar={car}></FeaturedCarsCards>)
                 }

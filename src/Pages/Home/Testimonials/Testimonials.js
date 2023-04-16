@@ -40,12 +40,12 @@ const Testimonials = () => {
             avatar: AVTR4,
             name: "Lady Gaga",
             review:
-                "I am really blessed to have a platform like that.They made it easy."
+                "I am really blessed to have a platform like that.They made it."
         }
     ];
     return (
         <section id="testimonials">
-            <h2 className="text-center text-5xl font-bold my-10">Testimonials</h2>
+            <h1 className="mt-10 mb-2 text-xl md:text-2xl lg:text-4xl text-cyan-500 font-bold md:text-left text-center ">WHAT CLIENTS SAY</h1><hr className="py-2" />
 
             <Swiper
                 className=" testimonials__container"
@@ -57,10 +57,11 @@ const Testimonials = () => {
                 scrollbar={{ draggable: true }}
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log("slide change")}
+
             >
                 {data.map(({ avatar, name, review }, index) => {
                     return (
-                        <SwiperSlide key={index} className="testimonials">
+                        <SwiperSlide key={index} className="testimonials mt-8 mb-10">
                             <div className="client__avatar aspect-square">
                                 <img src={avatar} alt="" />
                             </div>

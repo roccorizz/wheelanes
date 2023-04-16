@@ -11,7 +11,7 @@ import Testimonials from '../Testimonials/Testimonials';
 
 const Home = () => {
     return (
-        <div className='mx-5'>
+        <div className='container mx-auto'>
             <Banner />
             <FeaturedCars />
             <CarCategory />

@@ -28,28 +28,28 @@ const DashboardLayout = () => {
 
 
                 </div>
-                <div className="drawer-side">
-                    <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80  text-base-content">
+                <div className="drawer-side  mr-5">
+                    <label htmlFor="dashboard-drawer" className="drawer-overlay "></label>
+                    <ul className="menu p-4 w-80  text-base-content ">
 
 
                         {
                             isAdmin && <>
-                                <li className='font-bold text-blue-400'><Link to="/dashboard/allusers">All Buyers</Link></li>
-                                <li className='font-bold text-yellow-400'><Link to="/dashboard/allseller">All Sellers</Link></li>
-                                <li className='font-bold text-red-500'><Link to="/dashboard/reporteditems">Reported Items</Link></li>
+                                <li className='font-bold text-black border border-black rounded-lg my-2'><Link to="/dashboard/allusers">All Buyers</Link></li>
+                                <li className='font-bold text-black border border-black rounded-lg my-2'><Link to="/dashboard/allseller">All Sellers</Link></li>
+
 
                             </>
                         }
                         {
                             isSeller && <>
-                                <li className='font-bold text-2xl text-green-400'><Link to="/dashboard/addproduct">Add a Car</Link></li>
-                                <li className='font-bold text-2xl text-blue-400'><Link to="/dashboard/managecars">Manage Cars</Link></li>
+                                <li className='font-bold text-2xl text-black border border-black rounded-lg my-2'><Link to="/dashboard/addproduct">Add a Car</Link></li>
+                                <li className='font-bold text-2xl text-black border border-black rounded-lg my-2'><Link to="/dashboard/managecars">Manage Cars</Link></li>
                             </>
                         }
                         {
                             userType && <>
-                                <li className='font-bold text-2xl text-green-400' ><Link to="/dashboard/myorders">My Orders</Link></li>
+                                <li className='font-bold text-2xl text-black border border-black rounded-lg my-2' ><Link to="/dashboard/myorders">My Orders</Link></li>
                             </>
                         }
                     </ul>

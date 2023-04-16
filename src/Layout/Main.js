@@ -6,7 +6,7 @@ import Header from '../Pages/Shared/Header/Header';
 
 const Main = () => {
     return (
-        <div className='bg-gradient-to-r from-red-500 to-blue-400'>
+        <div className='bg-black'>
             <Navbar></Navbar>
             <Header></Header>
             <Outlet></Outlet>
