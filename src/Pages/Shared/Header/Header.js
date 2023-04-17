@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../../src/Contexts/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
 import useSeller from '../../../hooks/useSeller';
@@ -10,6 +10,7 @@ const Header = () => {
     const [isAdmin] = useAdmin(user?.email)
     const [isSeller] = useSeller(user?.email)
     const [userType, setUserType] = useState(null)
+    const location = useLocation();
 
     const logout = () => {
         logOut()
@@ -23,19 +24,29 @@ const Header = () => {
             setUserType(type)
         }
     }, [])
+    const menuItems = (
 
-    const menuItems = <>
-        <li className='font-semibold text-white'><Link to='/'>Home</Link></li>
-        <li className='font-semibold text-white'><Link to='/blog'>Blog</Link></li>
-        {user?.uid ?
-            <>
-                <li className='font-semibold text-white'><Link to="/dashboard">Dashboard</Link></li>
-                {/* {!isSeller && !isAdmin && <li className='font-semibold text-white'><Link to='/mywishlist'>My Wishlist</Link></li>} */}
-                <li><button className='btn text-red-300' onClick={logout}>LogOut</button></li>
-            </> :
-            <li className='font-semibold text-white'><Link to='/login'>Login</Link></li>
-        }
-    </>
+
+        <>
+            <li li className={`font-semibold text-white rounded-lg  ${location.pathname === '/' ? 'active bg-cyan-500' : 'hover:bg-primary-500'}`}> <Link to='/'>Home</Link></li>
+            <li className={`font-semibold text-white rounded-lg ${location.pathname === '/blog' ? 'active bg-cyan-500' : 'hover:bg-primary-500'}`}><Link to='/blog'>Blog</Link></li>
+            {user && user.uid ? (
+                <>
+                    <li className={`font-semibold text-white rounded-lg ${location.pathname === '/dashboard' ? 'active bg-cyan-500' : 'hover:bg-primary-500'}`}><Link to="/dashboard">Dashboard</Link></li>
+                    <li><button className='btn text-red-300' onClick={logout}>LogOut</button></li>
+                </>
+            )
+                : (
+
+                    <li className={`font-semibold text-white rounded-lg ${location.pathname === '/login' ? 'active bg-cyan-500' : 'hover:bg-primary-500'}`}><Link to='/login'>Login</Link></li>
+                )
+            }
+
+
+        </>
+    )
+
+
 
     return (
 
