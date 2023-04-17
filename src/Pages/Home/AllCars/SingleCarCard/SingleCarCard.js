@@ -6,39 +6,7 @@ import { Helmet } from 'react-helmet';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import BookingModal from './BookingModal/BookingModal';
 const SingleCarCard = () => {
-    /*
-_id
-6389731bdfb014290427cffd
-carName
-"Audi A8"
-origin
-"Germany"
-price
-"4000"
-resale_price
-"3300"
-years_of_used
-"3"
-carCategory
-"3"
-description
-"jhfgaskjahfakfasfjksaf"
-milespergallon
-"23"
-buyingyear
-"2022-12-05"
-company
-"Audi"
-image
-"https://i.ibb.co/6wkTrbM/mercedes-1327610-1920.jpg"
-condition
-"Good"
-status
-"Active"
-seller
-"abdur@mia.com"
-isFeatured
-true*/
+
     const car = useLoaderData();
     const [cardetails, setCardetails] = useState('');
     const [userType, setUserType] = useState(null)
