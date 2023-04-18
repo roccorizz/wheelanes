@@ -24,6 +24,7 @@ import Blog from "../../Pages/Home/Home/Blog/Blog";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import MyOrders from "../../Dashboard/Dashboard/MyOrders/MyOrders";
 import Payment from "../../Pages/Shared/Payment/Payment";
+import BlogDetails from "../../Pages/Home/Home/Blog/BlogDetails";
 
 
 export const router = createBrowserRouter([
@@ -55,7 +56,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/blog',
-                element: <Blog></Blog>
+                element: <Blog />
+            },
+            {
+                path: '/blog/:id',
+                element: <BlogDetails />
             },
 
 
