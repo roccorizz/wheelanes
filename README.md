@@ -6,7 +6,7 @@ Five bullet points to add in this project -
 4. For buyer,a booking button is given after every product details whereas, a modal will popup and he can book from there easily.
 5. react stripe added for payment method.
 
-***** Live Link : https://wheelanes-758c0.web.app/  *****
+****** Live Link : https://wheelanes-758c0.web.app/  ******
 
 Admin email : admin@gmail.com
-pass : 654321
+Password : 654321
