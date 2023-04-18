@@ -5,14 +5,9 @@ import 'react-photo-view/dist/react-photo-view.css';
 const CarCategoryCards = ({ carcategoryy }) => {
     const { category_id, bodyType, CategoryImage } = carcategoryy;
     return (
-        <div className="card card-compact w-96 bg-base-100 shadow-xl p-2" style={{ width: '95%' }}>
+        <div className="card card-compact w-96 bg-base-100 shadow-xl p-2 mx-auto" style={{ width: '95%' }}>
             <figure>
-                <PhotoProvider>
-                    <PhotoView src={CategoryImage}>
-                        <img src={CategoryImage} className='h-60 w-full' alt="categoryimage" />
-                    </PhotoView>
-                </PhotoProvider>
-
+                <img src={CategoryImage} className='h-72 w-full' alt="categoryimage" />
             </figure>
             <div className="card-body  align-self">
                 <h2 className="card-title text-1xl justify-center capitalize">{bodyType}</h2>

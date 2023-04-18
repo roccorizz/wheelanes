@@ -24,7 +24,7 @@ const FeaturedCars = () => {
 
             </div>
 
-            <div className='grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 mb-5 mx-auto '>
+            <div className='grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-8 mb-5  '>
                 {
                     cars.map(car => <FeaturedCarsCards key={car._id} featuredcar={car}></FeaturedCarsCards>)
                 }
