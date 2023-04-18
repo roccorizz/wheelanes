@@ -84,7 +84,7 @@ const ManageCars = () => {
                     <tbody>
 
                         {
-                            cars.map((car, i) => <tr key={car._id}>
+                            cars && cars.map((car, i) => <tr key={car._id}>
 
 
                                 <th>{i + 1}</th>
